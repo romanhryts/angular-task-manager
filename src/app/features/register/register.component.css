@@ -1,0 +1,53 @@
+div {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-top: 8rem;
+}
+
+div > p {
+  font-size: 3rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 1rem;
+  width: 30%;
+}
+
+input {
+  border: 1px solid lightgray;
+  padding: 5px;
+  width: 100%;
+  font-size: larger;
+
+}
+
+button {
+  align-self: flex-end;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  width: 25%;
+  font-size: larger;
+
+}
+
+button:hover {
+  background-color: lightskyblue;
+  color: white;
+}
+
+button:hover, button:not(:hover) {
+  transition: 0.3s ease-in-out;
+}
+
+input:focus, input:active {
+  outline: none;
+}

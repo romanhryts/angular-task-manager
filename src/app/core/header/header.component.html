@@ -1,0 +1,12 @@
+<header>
+  <a routerLink="" class="dashboard" *ngIf="isAuth">Dashboard</a>
+  <h1>Task Manager</h1>
+  <div class="logger" *ngIf="!isAuth">
+    <span><a routerLink="login">Log in</a></span>
+    <span><a routerLink="register">Register</a></span>
+  </div>
+  <div class="logged" *ngIf="isAuth">
+    <span>Hi, <span class="username">{{user?.name}}</span>!</span>
+    <span><a (click)="logout()">Log out</a></span>
+  </div>
+</header>

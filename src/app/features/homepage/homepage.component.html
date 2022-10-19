@@ -1,0 +1,8 @@
+<div  class="boards">
+  <div class="board add-board">+</div>
+  <div *ngFor="let b of boards$ | async" class="board" [id]="b._id">
+    <h3 class="board__name">{{b.name}}</h3>
+    <p class="board__desc">{{b.description}}</p>
+    <span class="board__date">{{b.createdAt | date}}</span>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div>
+  <p>Please create new account.</p>
+  <form [formGroup]="form" (submit)="register()">
+    <input formControlName="name" type="text" placeholder="Name">
+    <input formControlName="email" type="email" placeholder="Email">
+    <input formControlName="password" type="password" placeholder="Password">
+    <button type="submit">Sign up</button>
+  </form>
+</div>

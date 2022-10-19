@@ -1,0 +1,8 @@
+<div>
+  <p>Please sign in to your account.</p>
+  <form [formGroup]="form" (submit)="login()">
+    <input formControlName="email" type="email" placeholder="Email">
+    <input formControlName="password" type="password" placeholder="Password">
+    <button type="submit">Sign in</button>
+  </form>
+</div>
