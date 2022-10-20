@@ -1,19 +1,10 @@
 .boards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 15px;
+  grid-auto-rows: 1fr;
+  gap: 25px;
   margin: 10% auto 0;
   width: 65%;
-}
-
-.board {
-  border: 1px solid lightskyblue;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px 25px;
-  width: 70%;
 }
 
 .add-board {
@@ -24,19 +15,11 @@
   justify-content: center;
   align-items: center;
   font-size: 60px;
-
+  height: 100%;
+  padding: 5px 25px;
 }
 
 .add-board:hover {
   cursor: pointer;
   opacity: 0.7;
-}
-
-.board__name {
-  text-transform: uppercase;
-}
-
-.board__date {
-  font-size: smaller;
-  align-self: flex-end;
 }

@@ -1,0 +1,13 @@
+<div class="board" [id]="board._id">
+  <button
+    class="board__menu"
+    (click)="toggleBoardMenu()"
+  >...</button>
+  <div class="board__actions" *ngIf="isBoardMenu">
+    <p (click)="onDeleteBoard(board._id)">Delete</p>
+    <p (click)="onOpenBoardEditor(board)">Edit</p>
+  </div>
+  <h3 class="board__name">{{board.name}}</h3>
+  <p class="board__desc">{{board.description}}</p>
+  <span class="board__date">{{board.createdAt | date}}</span>
+</div>

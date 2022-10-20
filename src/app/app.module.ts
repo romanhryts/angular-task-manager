@@ -6,17 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './features/homepage/homepage.component';
+import { BoardComponent } from './features/homepage/components/board/board.component';
+import { BoardModalComponent } from './features/homepage/components/board-modal/board-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    BoardComponent,
+    BoardModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,21 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Board } from '../../models/board/board';
+import { IBoard } from '../../models/board/board';
+import { IAddBoard } from '../../models/board/add-board';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
-
-  private readonly api: string = 'http://localhost:8000/api/';
+  private readonly api: string = 'http://localhost:8000/api/boards/';
 
   constructor(private http: HttpClient) {
   }
 
-  getBoards(): Observable<Board[]> {
-    const link: string = this.api + 'boards';
-    return this.http.get<Board[]>(link, {withCredentials: true});
+  getBoards(): Observable<IBoard[]> {
+    return this.http.get<IBoard[]>(this.api, { withCredentials: true });
+  }
+
+  addBoard(data: IAddBoard): Observable<IBoard> {
+    return this.http.post<IBoard>(this.api, data);
+  }
+
+  deleteBoard(id: string): Observable<string> {
+    return this.http.delete<string>(this.api + id);
+  }
+
+  editBoard(data: IAddBoard): Observable<IBoard> {
+    return this.http.put<IBoard>(this.api, data);
   }
 
 }

@@ -1,0 +1,39 @@
+div {
+  background-color: lightgrey;
+  position: absolute;
+  top: 40%;
+  left: 33%;
+  width: 33vw;
+  height: 20vh;
+  z-index: 50;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 80%;
+  margin: 10% 10%;
+}
+
+button {
+  align-self: flex-end;
+  background-color: lightskyblue;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+input {
+  padding: 5px 10px;
+  outline: none;
+}
+
+span {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  cursor: pointer;
+}

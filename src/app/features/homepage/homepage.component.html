@@ -1,8 +1,28 @@
-<div  class="boards">
-  <div class="board add-board">+</div>
-  <div *ngFor="let b of boards$ | async" class="board" [id]="b._id">
-    <h3 class="board__name">{{b.name}}</h3>
-    <p class="board__desc">{{b.description}}</p>
-    <span class="board__date">{{b.createdAt | date}}</span>
-  </div>
+<div
+  class="boards"
+  [ngStyle]="showAddBoardModal || showEditBoardModal ? {filter: 'blur(5px)'} : null"
+>
+  <div class="board add-board" (click)="toggleAddBoardModal()">+</div>
+
+  <app-board
+    *ngFor="let b of boards" [board]="b"
+    (deleteBoardEvent)="deleteBoard($event)"
+    (openBoardEditorEvent)="setEditingBoard($event)"
+  ></app-board>
+
 </div>
+
+<app-board-modal
+  modalType="ADD"
+  *ngIf="showAddBoardModal"
+  (addBoardEvent)="addBoard($event)"
+  (closeModalEvent)="toggleAddBoardModal()"
+></app-board-modal>
+
+<app-board-modal
+  modalType="EDIT"
+  [editingBoard]="editingBoard"
+  *ngIf="showEditBoardModal"
+  (editBoardEvent)="editBoard($event)"
+  (closeModalEvent)="toggleEditBoardModal()"
+></app-board-modal>

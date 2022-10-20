@@ -1,4 +1,4 @@
-export interface Board {
+export interface IBoard {
   _id: string;
   user_id: string;
   name: string;

@@ -1,0 +1,8 @@
+<div>
+  <span (click)="onCloseModal()">&#9587;</span>
+  <form [formGroup]="form" (submit)="this.modalType === 'ADD' ? onAddBoard() : onEditBoard()">
+    <input formControlName="name" type="text" placeholder="Name">
+    <input formControlName="description" type="text" placeholder="Description">
+    <button type="submit">{{this.modalType === 'ADD' ? 'Add board' : 'Edit board'}}</button>
+  </form>
+</div>

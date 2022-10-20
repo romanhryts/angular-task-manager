@@ -8,7 +8,6 @@ const routes: Routes = [
     path: '',
     component: HomepageComponent,
     canActivate: [HomepageGuard],
-    children: []
   },
   {
     path: 'login',
