@@ -1,0 +1,37 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+  margin: 4rem auto 0;
+}
+
+.toolbar__filter {
+  border: 1px solid lightgrey;
+  padding: 6px 10px 3px;
+  font-size: 1.5rem;
+  outline: none;
+  width: 32%;
+}
+
+.toolbar__sort-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10%;
+  font-size: 1.5rem;
+  width: 58%;
+}
+
+.toolbar__sort-nav select {
+  border: 1px solid lightgrey;
+  padding: 6px 10px 3px;
+  font-size: 1.5rem;
+}
+
+.sorting-type {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+}

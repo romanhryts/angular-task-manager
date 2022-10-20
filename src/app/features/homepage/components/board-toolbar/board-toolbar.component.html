@@ -1,0 +1,31 @@
+<div class="toolbar">
+  <input
+    #filter
+    type="text"
+    class="toolbar__filter"
+    placeholder="Search board or task inside board"
+    (input)="onInputEvent(filter.value)"
+  >
+  <div class="toolbar__sort-nav">
+    <div class="sorting-options">
+      <select #selectSortField (change)="onSelectSortField(selectSortField)">
+        <optgroup label="Field">
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+        </optgroup>
+        <optgroup label="Amount of tasks">
+          <option value="todo">To do</option>
+          <option value="progress">In progress</option>
+          <option value="done">Done</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="sorting-type">
+      <span>Sorting type:</span>
+      <input #asc type="radio" id="ASC" name="sortType" (change)="onSelectSortTypeEvent(asc.id)" checked>
+      <label for="ASC">ASC</label>
+      <input #desc type="radio" id="DESC" name="sortType" (change)="onSelectSortTypeEvent(desc.id)">
+      <label for="DESC">DESC</label>
+    </div>
+  </div>
+</div>

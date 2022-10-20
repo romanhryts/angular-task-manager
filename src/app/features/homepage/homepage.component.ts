@@ -15,6 +15,9 @@ export class HomepageComponent implements OnInit {
   public showAddBoardModal: boolean = false;
   public showEditBoardModal: boolean = false;
   public editingBoard: IBoard | null = null;
+  public filterTerm: string = '';
+  public sortType: string = 'ASC';
+  public sortField: string = 'date';
 
   constructor(
     private readonly boardService: BoardService,
@@ -80,4 +83,16 @@ export class HomepageComponent implements OnInit {
     this.toggleEditBoardModal();
   }
 
+  updateFilterTerm(value: string): void {
+    console.log(value);
+    this.filterTerm = value;
+  }
+
+  changeSortType(value: string) {
+    this.sortType = value;
+  }
+
+  changeSortField(value: string) {
+    this.sortField = value;
+  }
 }

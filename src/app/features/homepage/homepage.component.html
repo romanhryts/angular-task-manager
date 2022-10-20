@@ -1,15 +1,16 @@
-<div
-  class="boards"
-  [ngStyle]="showAddBoardModal || showEditBoardModal ? {filter: 'blur(5px)'} : null"
->
-  <div class="board add-board" (click)="toggleAddBoardModal()">+</div>
+<app-board-toolbar
+  (inputEvent)="updateFilterTerm($event)"
+  (selectSortTypeEvent)="changeSortType($event)"
+  (selectSortFieldEvent)="changeSortField($event)"
+></app-board-toolbar>
 
+<div class="boards" [ngStyle]="showAddBoardModal || showEditBoardModal ? {filter: 'blur(5px)'} : null">
+  <div class="board add-board" (click)="toggleAddBoardModal()">+</div>
   <app-board
-    *ngFor="let b of boards" [board]="b"
+    *ngFor="let b of boards | filterBoards: filterTerm | sortBoard: sortType : sortField" [board]="b"
     (deleteBoardEvent)="deleteBoard($event)"
     (openBoardEditorEvent)="setEditingBoard($event)"
   ></app-board>
-
 </div>
 
 <app-board-modal
