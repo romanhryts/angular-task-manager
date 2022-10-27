@@ -1,5 +1,6 @@
-<div class="board" [id]="board._id">
+<div class="board" [id]="board._id" appWindowClickDetect (windowClick)="onWindowClick()">
   <button
+    #boardMenu
     class="board__menu"
     (click)="toggleBoardMenu()"
   >...</button>
@@ -7,7 +8,7 @@
     <p (click)="onDeleteBoard(board._id)">Delete</p>
     <p (click)="onOpenBoardEditor(board)">Edit</p>
   </div>
-  <h3 class="board__name">{{board.name}}</h3>
+  <h3 class="board__name"><a [routerLink]="['/board', board._id]" [state]="{data: board}">{{board.name}}</a></h3>
   <p class="board__desc">{{board.description}}</p>
   <span class="board__date">{{board.createdAt | date}}</span>
 </div>

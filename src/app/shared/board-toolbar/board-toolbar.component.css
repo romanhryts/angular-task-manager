@@ -2,8 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 65%;
-  margin: 4rem auto 0;
+  width: 100%;
 }
 
 .toolbar__filter {
@@ -11,14 +10,14 @@
   padding: 6px 10px 3px;
   font-size: 1.5rem;
   outline: none;
-  width: 32%;
+  width: 40%;
 }
 
 .toolbar__sort-nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10%;
+  gap: 15px;
   font-size: 1.5rem;
   width: 58%;
 }

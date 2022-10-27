@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board-toolbar',
@@ -9,6 +9,9 @@ export class BoardToolbarComponent implements OnInit {
   @Output() inputEvent = new EventEmitter<string>();
   @Output() selectSortTypeEvent = new EventEmitter<string>();
   @Output() selectSortFieldEvent = new EventEmitter<string>();
+
+  @Input() filterPlaceholder: string = 'Search board or tasks inside board';
+  @Input() showAdditionalOptions: boolean = true;
 
   constructor() { }
 

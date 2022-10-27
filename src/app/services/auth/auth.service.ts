@@ -21,6 +21,7 @@ export class AuthService {
   login(data: ILoginUser): void {
     this.http
       .post<IUser>(this.api + 'login', data, { withCredentials: true })
+      .pipe(take(1))
       .subscribe({
         next: (value: IUser) => {
           this.authState.next(true);
@@ -37,6 +38,7 @@ export class AuthService {
   register(data: IRegisterUser): void {
     this.http
       .post<{ message: string, status: number }>(this.api + 'register', data)
+      .pipe(take(1))
       .subscribe({
         next: () => {
           this.router.navigate(['login']).catch(console.log)
@@ -48,6 +50,7 @@ export class AuthService {
   logout(): void {
     this.http
       .post<{ message: string, status: number }>(this.api + 'logout', null, { withCredentials: true })
+      .pipe(take(1))
       .subscribe({
         next: () => {
           this.authState.next(false);

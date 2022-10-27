@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IBoard } from '../../../../models/board/board';
+import { WindowClickDetectDirective } from '../../../../directives/window-click-detect.directive';
 
 
 @Component({
@@ -13,6 +14,13 @@ export class BoardComponent implements OnInit {
   @Output() openBoardEditorEvent = new EventEmitter<IBoard>();
 
   isBoardMenu: boolean = false;
+
+  @ViewChild('boardMenu') boardMenu!: ElementRef;
+
+  @ViewChild(WindowClickDetectDirective)
+  set boardMenuDirective(directive: WindowClickDetectDirective) {
+    directive.boardMenu = this.boardMenu;
+  }
 
   constructor() {
   }
@@ -30,5 +38,9 @@ export class BoardComponent implements OnInit {
 
   onOpenBoardEditor(value: IBoard): void {
     this.openBoardEditorEvent.emit(value)
+  }
+
+  onWindowClick(): void {
+    this.isBoardMenu = false;
   }
 }

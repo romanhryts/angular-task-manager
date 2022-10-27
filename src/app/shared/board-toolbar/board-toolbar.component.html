@@ -3,7 +3,7 @@
     #filter
     type="text"
     class="toolbar__filter"
-    placeholder="Search board or task inside board"
+    placeholder="{{filterPlaceholder}}"
     (input)="onInputEvent(filter.value)"
   >
   <div class="toolbar__sort-nav">
@@ -13,7 +13,7 @@
           <option value="date">Date</option>
           <option value="name">Name</option>
         </optgroup>
-        <optgroup label="Amount of tasks">
+        <optgroup label="Amount of tasks" *ngIf="showAdditionalOptions">
           <option value="todo">To do</option>
           <option value="progress">In progress</option>
           <option value="done">Done</option>
@@ -21,7 +21,7 @@
       </select>
     </div>
     <div class="sorting-type">
-      <span>Sorting type:</span>
+      <span [ngStyle]="{'white-space': 'nowrap'}">Sorting type:</span>
       <input #asc type="radio" id="ASC" name="sortType" (change)="onSelectSortTypeEvent(asc.id)" checked>
       <label for="ASC">ASC</label>
       <input #desc type="radio" id="DESC" name="sortType" (change)="onSelectSortTypeEvent(desc.id)">

@@ -1,4 +1,5 @@
 <app-board-toolbar
+  [ngStyle]="{'margin': '4rem auto 0', 'display': 'flex', 'justify-content': 'center', 'width': '65%'}"
   (inputEvent)="updateFilterTerm($event)"
   (selectSortTypeEvent)="changeSortType($event)"
   (selectSortFieldEvent)="changeSortField($event)"

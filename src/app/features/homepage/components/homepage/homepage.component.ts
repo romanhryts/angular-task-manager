@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardService } from '../../services/board/board.service';
+import { BoardService } from '../../../../services/board/board.service';
 import { take } from 'rxjs';
-import { IBoard } from '../../models/board/board';
-import { IAddBoard } from '../../models/board/add-board';
-import { AuthService } from '../../services/auth/auth.service';
+import { IBoard } from '../../../../models/board/board';
+import { IAddBoard } from '../../../../models/board/add-board';
+import { AuthService } from '../../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-homepage',

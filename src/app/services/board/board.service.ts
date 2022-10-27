@@ -18,6 +18,10 @@ export class BoardService {
     return this.http.get<IBoard[]>(this.api, { withCredentials: true });
   }
 
+  getBoard(id: string): Observable<IBoard> {
+    return this.http.get<IBoard>(this.api + id);
+  }
+
   addBoard(data: IAddBoard): Observable<IBoard> {
     return this.http.post<IBoard>(this.api, data);
   }

@@ -1,21 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './features/homepage/homepage.component';
-import { HomepageGuard } from './guards/homepage/homepage.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomepageComponent,
-    canActivate: [HomepageGuard],
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./features/homepage/homepage.module').then(m => m.HomepageModule),
+    pathMatch: 'full'
   },
   {
     path: 'login',
-    loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule),
+    pathMatch: 'full'
   },
   {
     path: 'register',
-    loadChildren: () => import('./features/register/register.module').then(m => m.RegisterModule)
+    loadChildren: () => import('./features/register/register.module').then(m => m.RegisterModule),
+    pathMatch: 'full'
+  },
+  {
+    path: 'board/:id',
+    loadChildren: () => import('./features/boardpage/boardpage.module').then(m => m.BoardpageModule),
+    pathMatch: 'full'
   }
 ];
 

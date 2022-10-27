@@ -1,5 +1,5 @@
 <header>
-  <a routerLink="" class="dashboard" *ngIf="isAuth">Dashboard</a>
+  <a routerLink="" class="dashboard" *ngIf="isAuth && showDashLink">Dashboard</a>
   <h1>Task Manager</h1>
   <div class="logger" *ngIf="!isAuth">
     <span><a routerLink="login">Log in</a></span>
