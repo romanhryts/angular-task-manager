@@ -5,4 +5,5 @@
     <input formControlName="password" type="password" placeholder="Password">
     <button type="submit">Sign in</button>
   </form>
+  <p *ngIf="isError" class="error">Invalid credentials</p>
 </div>

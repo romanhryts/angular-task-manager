@@ -36,7 +36,10 @@ button {
   text-transform: uppercase;
   width: 25%;
   font-size: larger;
+}
 
+.error {
+  color: lightcoral;
 }
 
 button:hover {

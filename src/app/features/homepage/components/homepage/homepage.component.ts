@@ -4,6 +4,7 @@ import { take } from 'rxjs';
 import { IBoard } from '../../../../models/board/board';
 import { IAddBoard } from '../../../../models/board/add-board';
 import { AuthService } from '../../../../services/auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -19,20 +20,28 @@ export class HomepageComponent implements OnInit {
   public sortType: string = 'ASC';
   public sortField: string = 'date';
 
+  public boardToolbarStyles = {
+    'margin': '4rem auto 0',
+    'display': 'flex',
+    'justify-content': 'center',
+    'width': '65%',
+    'filter': ''
+  }
+
   constructor(
     private readonly boardService: BoardService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
-    this.boardService
-      .getBoards()
+    this.activatedRoute.data
       .pipe(take(1))
       .subscribe({
-        next: (value) => this.boards = value,
+        next: ({data}) => this.boards = data,
         error: () => this.boards = []
-      });
+      })
   }
 
   addBoard(data: IAddBoard): void {
@@ -72,10 +81,20 @@ export class HomepageComponent implements OnInit {
 
   toggleAddBoardModal(): void {
     this.showAddBoardModal = !this.showAddBoardModal;
+    if (this.showAddBoardModal) {
+      this.boardToolbarStyles.filter = 'blur(5px)';
+    } else {
+      this.boardToolbarStyles.filter = '';
+    }
   }
 
   toggleEditBoardModal(): void {
     this.showEditBoardModal = !this.showEditBoardModal;
+    if (this.showEditBoardModal) {
+      this.boardToolbarStyles.filter = 'blur(5px)';
+    } else {
+      this.boardToolbarStyles.filter = '';
+    }
   }
 
   setEditingBoard(value: IBoard): void {

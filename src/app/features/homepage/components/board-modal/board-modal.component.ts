@@ -15,7 +15,7 @@ export class BoardModalComponent implements OnInit {
 
   @Output() addBoardEvent = new EventEmitter<IAddBoard>();
   @Output() editBoardEvent = new EventEmitter<IAddBoard>();
-  @Output() closeModalEvent = new EventEmitter();
+  @Output() closeModalEvent = new EventEmitter<void>();
 
   public form!: FormGroup;
 

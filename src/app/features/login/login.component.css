@@ -37,6 +37,10 @@ button {
   font-size: larger;
 }
 
+.error {
+  color: lightcoral;
+}
+
 button:hover {
   background-color: lightskyblue;
   color: white;

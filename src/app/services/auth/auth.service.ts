@@ -18,33 +18,14 @@ export class AuthService {
   constructor(private readonly http: HttpClient, private readonly router: Router) {
   }
 
-  login(data: ILoginUser): void {
-    this.http
-      .post<IUser>(this.api + 'login', data, { withCredentials: true })
-      .pipe(take(1))
-      .subscribe({
-        next: (value: IUser) => {
-          this.authState.next(true);
-          this.userState.next(value);
-          this.router.navigate(['']).catch(console.log);
-        },
-        error: () => {
-          this.authState.next(false);
-          this.userState.next(null);
-        }
-      });
+  login(data: ILoginUser): Observable<IUser> {
+    return this.http.post<IUser>(this.api + 'login', data, { withCredentials: true })
+
   }
 
-  register(data: IRegisterUser): void {
-    this.http
-      .post<{ message: string, status: number }>(this.api + 'register', data)
-      .pipe(take(1))
-      .subscribe({
-        next: () => {
-          this.router.navigate(['login']).catch(console.log)
-        },
-        error: (err) => console.log(err)
-      });
+  register(data: IRegisterUser): Observable<{message: string; status: number}> {
+    return this.http.post<{ message: string, status: number }>(this.api + 'register', data);
+
   }
 
   logout(): void {
