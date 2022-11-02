@@ -1,0 +1,54 @@
+<div
+  *ngIf="board"
+  [ngStyle]="showEditModal ? {filter: 'blur(5px)'} : null"
+  [ngClass]="showEditModal ? 'disabled-feature' : null"
+  class="board__details"
+>
+  <button type="button" class="delete-board" (click)="deleteBoard()">DELETE</button>
+  <div class="board__navbar">
+    <h2 class="board__title">{{board.name}}</h2>
+
+    <app-board-toolbar
+      filterPlaceholder="Search task"
+      [showAdditionalOptions]="false"
+      (inputEvent)="updateTerm($event)"
+      (selectSortTypeEvent)="updateSortType($event)"
+      (selectSortFieldEvent)="updateSortField($event)"
+    ></app-board-toolbar>
+
+  </div>
+
+  <div class="board__lists">
+
+    <app-list
+      type="TODO"
+      [tasks]="todoTasks | filterTasks : term | sortTasks: sortType : sortField"
+      [boardId]="board._id"
+      [listColor]="board.todoListColor"
+      (takeUpEditingTask)="setEditingTask($event)"
+    ></app-list>
+    <app-list
+      type="PROGRESS"
+      [tasks]="progressTasks | filterTasks: term | sortTasks: sortType : sortField"
+      [boardId]="board._id"
+      [listColor]="board.progressListColor"
+      (takeUpEditingTask)="setEditingTask($event)"
+    ></app-list>
+    <app-list
+      type="DONE"
+      [tasks]="doneTasks | filterTasks: term | sortTasks: sortType : sortField"
+      [boardId]="board._id"
+      [listColor]="board.doneListColor"
+      (takeUpEditingTask)="setEditingTask($event)"
+    ></app-list>
+
+  </div>
+</div>
+
+<ng-container *ngIf="showEditModal">
+  <app-task-modal
+    [taskName]="editingTask!.name"
+    (closeModalEvent)="clearEditing()"
+    (submitEditingNameEvent)="editTask($event.name)"
+  ></app-task-modal>
+</ng-container>

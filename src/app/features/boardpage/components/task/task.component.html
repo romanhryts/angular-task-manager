@@ -1,0 +1,9 @@
+<div appWindowClickDetect (windowClick)="onWindowClick()" class="task"  [id]="task._id" #taskItem>
+  <button type="button" class="task__menu-btn" (click)="toggleContextMenu()" #taskMenu>...</button>
+  <div class="task__menu-actions" *ngIf="showContextMenu">
+    <span (click)="onDeleteTask(taskItem.id)">DELETE</span>
+    <span (click)="onEditTask()">EDIT</span>
+    <span (click)="onArchiveTask()">ARCHIVE</span>
+  </div>
+  <p class="task__name">{{task.name}}</p>
+</div>

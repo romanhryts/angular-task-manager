@@ -34,4 +34,12 @@ export class BoardService {
     return this.http.put<IBoard>(this.api, data);
   }
 
+  editListColor(boardId: string, listType: string, value: string): Observable<string> {
+    const link: string = `${this.api}${boardId}`;
+    return this.http.patch<string>(link, {
+      "field": listType,
+      "value": JSON.stringify(value)
+    });
+  }
+
 }

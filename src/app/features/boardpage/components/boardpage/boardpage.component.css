@@ -1,0 +1,50 @@
+.board__details {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 90%;
+  margin: 3% auto 0;
+}
+
+.board__navbar {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 8fr;
+  align-items: end;
+  gap: 100px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.board__title {
+  font-size: 2em;
+  white-space: nowrap;
+}
+
+.delete-board {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: crimson;
+  font-size: 1.2rem;
+  transition: 0.3s ease-in-out;
+  width: 50px;
+}
+
+.delete-board:hover {
+  transform: rotateZ(-15deg);
+}
+
+.board__lists {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.list__title {
+  font-size: 2em;
+}
+
+.disabled-feature {
+  pointer-events: none;
+}

@@ -1,0 +1,39 @@
+.task__modal {
+  background-color: lightgrey;
+  border: 1px solid blueviolet;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  position: absolute;
+  top: 39%;
+  left: 39%;
+  width: 250px;
+  height: 35px;
+  padding: 20px 15px;
+  z-index: 50;
+}
+
+.task__modal form {
+  display: flex;
+}
+
+input {
+  outline: none;
+}
+
+button {
+  background-color: white;
+  cursor: pointer;
+}
+
+button, input {
+  border: 1px solid lightskyblue;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+span {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+}

@@ -1,0 +1,39 @@
+<div class="board__list">
+  <p
+    class="list__title"
+    [ngStyle]="{border: '1px solid #' + listColor}"
+  >
+    {{(type === 'TODO' ? 'To Do' : type === 'DONE' ? 'Done' : 'In Progress') | uppercase}}
+  </p>
+   <div class="change-color-container">
+     <button type="button" (click)="updateColor()">&#10003;</button>
+     <input
+       type="color"
+       class="input-color"
+       id="change-color"
+       [(ngModel)]="updatedColor"
+     >
+   </div>
+
+  <div class="tasks" [ngStyle]="{border: '1px solid #' + listColor}">
+
+    <div class="add-task">
+      <button type="button" (click)="toggleFormVisibility(!showAddForm)">{{showAddForm ? 	'-' : '+'}}</button>
+      <form *ngIf="showAddForm" [formGroup]="form" (submit)="addTask()">
+        <input formControlName="name" type="text" placeholder="Name">
+        <button type="submit">Add</button>
+      </form>
+    </div>
+
+    <ng-container *ngFor="let t of tasks">
+      <app-task
+        [task]="t"
+        (deleteTaskEvent)="onDeleteTask($event)"
+        (editTaskEvent)="onEditTask($event)"
+        (archiveTaskEvent)="archiveTask($event)"
+      ></app-task>
+    </ng-container>
+
+  </div>
+</div>
+

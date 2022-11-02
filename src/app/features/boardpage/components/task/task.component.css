@@ -1,0 +1,36 @@
+.task {
+  background-color: lightgrey;
+  font-size: 30px;
+  text-align: center;
+  padding: 15px 0 10px;
+  position: relative;
+}
+
+.task__menu-actions {
+  background-color: lightskyblue;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 10px;
+  position: absolute;
+  right: -65px;
+  top: -40px;
+  z-index: 20;
+}
+
+.task__menu-actions span:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.task__menu-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 35px;
+  right: 5px;
+  top: -15px;
+  position: absolute;
+}
+

@@ -1,0 +1,7 @@
+<div class="task__modal">
+  <span (click)="onCloseModal()" [ngStyle]="{cursor: 'pointer'}">&#9587;</span>
+  <form [formGroup]="form" (submit)="onSubmitForm()">
+    <input formControlName="name" type="text" [value]="form.controls['name'].value">
+    <button type="submit">Edit</button>
+  </form>
+</div>

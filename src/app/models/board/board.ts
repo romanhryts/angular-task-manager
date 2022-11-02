@@ -6,5 +6,8 @@ export interface IBoard {
   name: string;
   description: string;
   createdAt: string;
+  todoListColor: string;
+  progressListColor: string;
+  doneListColor: string;
   tasks: ITask[];
 }
