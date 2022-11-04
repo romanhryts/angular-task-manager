@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITask } from '../../../../models/board/task';
 import { TasksService } from '../../../../services/tasks/tasks.service';
 import { take } from 'rxjs';
@@ -12,7 +12,7 @@ type TasksListType = 'TODO' | 'PROGRESS' | 'DONE';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, AfterContentInit {
   @Output() takeUpEditingTask = new EventEmitter<ITask>();
 
   @Input() type!: TasksListType;
@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   @Input() listColor!: string;
 
   public showAddForm: boolean = false;
-  public updatedColor: string = this.listColor;
+  public updatedColor: string = '#000000';
 
   public form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.minLength(1)])
@@ -30,9 +30,14 @@ export class ListComponent implements OnInit {
   constructor(
     private readonly tasksService: TasksService,
     private readonly boardService: BoardService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+  }
+
+  ngAfterContentInit(): void {
+    this.updatedColor = '#' + this.listColor;
   }
 
   toggleFormVisibility(value: boolean): void {
@@ -88,5 +93,10 @@ export class ListComponent implements OnInit {
         next: (color) => this.listColor = color,
         error: (err) => console.log(err)
       })
+  }
+
+
+  onRemovingAfterDrop(id: string): void {
+    this.tasks = this.tasks.filter(t => t._id !== id);
   }
 }

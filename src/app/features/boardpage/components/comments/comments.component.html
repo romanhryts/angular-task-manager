@@ -1,0 +1,19 @@
+<div class="comments__container">
+  <div class="comments"  *ngIf="comments; else noComments">
+    <div class="comment" *ngFor="let c of comments">
+      <p class="comment__text" #commentText>
+        {{c}}
+      </p>
+        <button type="button" (click)="deleteComment(commentText.innerText)">&#9587;</button>
+    </div>
+  </div>
+
+  <ng-template #noComments>No comments yet...</ng-template>
+
+  <form [formGroup]="form" (submit)="addComment()">
+    <input formControlName="comment" type="text" placeholder="Add new comment...">
+    <button type="submit">+</button>
+  </form>
+</div>
+
+

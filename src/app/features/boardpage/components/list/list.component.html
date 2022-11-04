@@ -11,6 +11,7 @@
        type="color"
        class="input-color"
        id="change-color"
+       [value]="updatedColor"
        [(ngModel)]="updatedColor"
      >
    </div>
@@ -25,14 +26,23 @@
       </form>
     </div>
 
-    <ng-container *ngFor="let t of tasks">
-      <app-task
-        [task]="t"
-        (deleteTaskEvent)="onDeleteTask($event)"
-        (editTaskEvent)="onEditTask($event)"
-        (archiveTaskEvent)="archiveTask($event)"
-      ></app-task>
-    </ng-container>
+    <div
+      class="tasks-list"
+      [ngStyle]="{'min-height': '400px'}"
+      (dragenter)="$event.preventDefault()"
+      (dragleave)="$event.preventDefault()"
+      (dragover)="$event.preventDefault()"
+      appDropListener [listType]="type"
+    >
+      <ng-container *ngFor="let t of tasks">
+        <app-task
+          [task]="t"
+          (deleteTaskEvent)="onDeleteTask($event)"
+          (editTaskEvent)="onEditTask($event)"
+          (archiveTaskEvent)="archiveTask($event)"
+        ></app-task>
+      </ng-container>
+    </div>
 
   </div>
 </div>

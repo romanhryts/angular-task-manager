@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './features/not-found/not-found.component';
+import { CommentsComponent } from './features/boardpage/components/comments/comments.component';
 
 const routes: Routes = [
   {
@@ -25,8 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'board/:id',
-    loadChildren: () => import('./features/boardpage/boardpage.module').then(m => m.BoardpageModule),
-    pathMatch: 'full'
+    loadChildren: () => import('./features/boardpage/boardpage.module').then(m => m.BoardpageModule)
   },
   {
     path: '**',

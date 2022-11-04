@@ -9,7 +9,7 @@ import { FilterBoardsPipe } from '../../pipes/homepage/filter-boards/filter-boar
 import { SortBoardsPipe } from '../../pipes/homepage/sort-boards/sort-boards.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BoardToolbarModule } from '../../shared/board-toolbar/board-toolbar.module';
-import { WindowClickDetectDirective } from '../../directives/window-click-detect.directive';
+import { WindowClickDetectDirective } from '../../directives/window-click-detect/window-click-detect.directive';
 
 
 @NgModule({

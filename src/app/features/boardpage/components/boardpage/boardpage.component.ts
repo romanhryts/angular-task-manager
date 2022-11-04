@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IBoard } from '../../../../models/board/board';
 import { BoardService } from '../../../../services/board/board.service';
-import { map, Observable, take } from 'rxjs';
+import { map, Observable, Subscription, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITask } from '../../../../models/board/task';
 import { TasksService } from '../../../../services/tasks/tasks.service';
@@ -11,8 +11,14 @@ import { TasksService } from '../../../../services/tasks/tasks.service';
   templateUrl: './boardpage.component.html',
   styleUrls: ['./boardpage.component.css']
 })
-export class BoardpageComponent implements OnInit {
+export class BoardpageComponent implements OnInit, OnDestroy {
   public board: IBoard | null = null;
+
+  private subscriptions: Subscription[] = [
+    this.tasksService.tasksSubject.subscribe(v => {
+      this.filterTasks(v)
+    })
+  ]
 
   public todoTasks: ITask[] = [];
   public progressTasks: ITask[] = [];
@@ -33,14 +39,20 @@ export class BoardpageComponent implements OnInit {
   ) {
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
   ngOnInit(): void {
     if (history.state.data) {
       this.board = history.state.data;
-      this.filterTasks(this.board!.tasks);
+      this.tasksService.tasksSubject.next(history.state.data.tasks);
     } else {
       this.initializeId()
         .pipe(take(1))
-        .subscribe((id) => this.getBoardInfo(id));
+        .subscribe((id) => {
+          this.getBoardInfo(id)
+        });
     }
   }
 
@@ -59,7 +71,7 @@ export class BoardpageComponent implements OnInit {
       .subscribe({
         next: (board) => {
           this.board = board;
-          this.filterTasks(this.board.tasks);
+          this.tasksService.tasksSubject.next(board.tasks);
         },
         error: () => this.board = null
       });

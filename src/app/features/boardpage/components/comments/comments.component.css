@@ -1,0 +1,55 @@
+.comments__container {
+  display: flex;
+  flex-direction: column;
+  margin: 25px auto;
+  width: 40%;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment {
+  background-color: lightgrey;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px 10px;
+  width: 100%;
+}
+
+.comment button {
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  background-color: lightskyblue;
+  color: white;
+  cursor: pointer;
+  padding:  8px 10px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  width: 105%;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  flex: 1;
+  padding: 5px 10px 0;
+  outline: none;
+}
+
+form button {
+  background-color: lightskyblue;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+  font-size: larger;
+  flex: 0.2;
+  padding: 10px 20px;
+  margin-top: 10px;
+}

@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IBoard } from '../../../../models/board/board';
-import { WindowClickDetectDirective } from '../../../../directives/window-click-detect.directive';
+import { WindowClickDetectDirective } from '../../../../directives/window-click-detect/window-click-detect.directive';
 
 
 @Component({

@@ -3,6 +3,7 @@
   font-size: 30px;
   text-align: center;
   padding: 15px 0 10px;
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -32,5 +33,11 @@
   right: 5px;
   top: -15px;
   position: absolute;
+}
+
+.task.dragging {
+  background-color: lightskyblue;
+  color: white;
+  opacity: .5;
 }
 

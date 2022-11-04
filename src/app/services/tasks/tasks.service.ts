@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ITask } from '../../models/board/task';
 
 type AddTaskStatus = 'TODO' | 'PROGRESS' | 'DONE';
@@ -10,6 +10,8 @@ type AddTaskStatus = 'TODO' | 'PROGRESS' | 'DONE';
 })
 export class TasksService {
   private readonly api: string = 'http://localhost:8000/api/boards/';
+  public tasksSubject = new BehaviorSubject<ITask[]>([]);
+  public draggingTask = new BehaviorSubject<ITask | null>(null);
 
   constructor(private http: HttpClient) {
   }
@@ -32,5 +34,15 @@ export class TasksService {
       name: name ? name : null,
       status: status ? status : null
     });
+  }
+
+  addComment(task_id: string, comment: string): Observable<ITask> {
+    return this.http.post<ITask>(`${this.api}task/comment`, {
+      task_id, comment
+    });
+  }
+
+  deleteComment(task_id: string, comment: string): Observable<ITask> {
+    return this.http.delete<ITask>(`${this.api}task/${task_id}/comment/${comment}`);
   }
 }

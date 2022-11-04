@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ITask } from '../../../../models/board/task';
-import { WindowClickDetectDirective } from '../../../../directives/window-click-detect.directive';
+import { WindowClickDetectDirective } from '../../../../directives/window-click-detect/window-click-detect.directive';
 
 @Component({
   selector: 'app-task',

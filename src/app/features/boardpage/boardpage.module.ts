@@ -11,6 +11,9 @@ import { SortTasksPipe } from '../../pipes/boardpage/sort-tasks/sort-tasks.pipe'
 import { TaskComponent } from './components/task/task.component';
 import { HomepageModule } from '../homepage/homepage.module';
 import { TaskModalComponent } from './components/task-modal/task-modal.component';
+import { DragListenerDirective } from '../../directives/drag-listener/drag-listener.directive';
+import { DropListenerDirective } from '../../directives/drop-listener/drop-listener.directive';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { TaskModalComponent } from './components/task-modal/task-modal.component
     FilterTasksPipe,
     SortTasksPipe,
     TaskComponent,
-    TaskModalComponent
+    TaskModalComponent,
+    DragListenerDirective,
+    DropListenerDirective,
+    CommentsComponent
   ],
   imports: [
     CommonModule,
