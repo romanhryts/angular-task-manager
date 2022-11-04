@@ -139,15 +139,8 @@ export class BoardpageComponent implements OnInit, OnDestroy {
   }
 
   updateTasks(task: ITask): void {
-    switch (this.editingTask!.status) {
-      case 'TODO':
-        this.todoTasks = this.todoTasks.map(el => el._id === task._id ? task : el);
-        break;
-      case 'PROGRESS':
-        this.progressTasks = this.progressTasks.map(el => el._id === task._id ? task : el);
-        break;
-      default:
-        this.doneTasks = this.doneTasks.map(el => el._id === task._id ? task : el);
-    }
+    const tasks: ITask[] = this.tasksService.tasksSubject.getValue();
+    const updated: ITask[] = tasks.map(t => t._id === task._id ? task : t);
+    this.tasksService.tasksSubject.next(updated);
   }
 }

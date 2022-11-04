@@ -49,7 +49,10 @@ export class ListComponent implements OnInit, AfterContentInit {
       .deleteTask(id, this.boardId)
       .pipe(take(1))
       .subscribe({
-        next: (id) => this.tasks = this.tasks.filter(t => t._id !== id),
+        next: (id) => {
+          const updated: ITask[] = this.tasksService.tasksSubject.getValue().filter(t => t._id !== id);
+          this.tasksService.tasksSubject.next(updated);
+        },
         error: (err) => console.log(err)
       })
   }
@@ -60,7 +63,8 @@ export class ListComponent implements OnInit, AfterContentInit {
       .pipe(take(1))
       .subscribe({
         next: (t) => {
-          this.tasks = [t, ...this.tasks];
+          const updated: ITask[] =[...this.tasksService.tasksSubject.getValue(), t];
+          this.tasksService.tasksSubject.next(updated);
           this.toggleFormVisibility(false);
         },
         error: (err) => console.log(err)
@@ -95,8 +99,4 @@ export class ListComponent implements OnInit, AfterContentInit {
       })
   }
 
-
-  onRemovingAfterDrop(id: string): void {
-    this.tasks = this.tasks.filter(t => t._id !== id);
-  }
 }
