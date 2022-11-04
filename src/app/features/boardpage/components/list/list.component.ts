@@ -84,7 +84,11 @@ export class ListComponent implements OnInit, AfterContentInit {
       .updateTask(value._id, value.name, 'ARCHIVE')
       .pipe(take(1))
       .subscribe({
-        next: (value) => this.tasks = this.tasks.filter(t => t._id !== value._id),
+        next: (value) => {
+          const tasks: ITask[] = this.tasksService.tasksSubject.getValue();
+          const updated: ITask[] = tasks.map(t => t._id === value._id ? value : t);
+          this.tasksService.tasksSubject.next(updated);
+        },
         error: (err) => console.log(err)
       })
   }
