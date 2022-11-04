@@ -98,5 +98,4 @@ export class ListComponent implements OnInit, AfterContentInit {
         error: (err) => console.log(err)
       })
   }
-
 }

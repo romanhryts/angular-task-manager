@@ -144,3 +144,4 @@ export class BoardpageComponent implements OnInit, OnDestroy {
     this.tasksService.tasksSubject.next(updated);
   }
 }
+
