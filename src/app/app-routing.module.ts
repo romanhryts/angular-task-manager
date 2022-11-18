@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './features/not-found/not-found.component';
-import { CommentsComponent } from './features/boardpage/components/comments/comments.component';
 
 const routes: Routes = [
   {

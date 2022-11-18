@@ -21,18 +21,18 @@ export class SortBoardsPipe implements PipeTransform {
         break;
       case 'todo':
         type === 'ASC'
-          ? sorted = [...boards].sort((a, b) => this.sortByStatusAsc(a, b, 'TODO'))
-          : sorted = [...boards].sort((a, b) => this.sortByStatusAsc(a, b, 'TODO')).reverse()
+          ? sorted = [...boards].sort((a, b) => this.sortByStatusDesc(a, b, 'TODO')).reverse()
+          : sorted = [...boards].sort((a, b) => this.sortByStatusDesc(a, b, 'TODO'))
         break;
       case 'progress':
         type === 'ASC'
-          ? sorted = [...boards].sort((a, b) => this.sortByStatusAsc(a, b, 'PROGRESS'))
-          : sorted = [...boards].sort((a, b) => this.sortByStatusAsc(a, b, 'PROGRESS')).reverse()
+          ? sorted = [...boards].sort((a, b) => this.sortByStatusDesc(a, b, 'PROGRESS')).reverse()
+          : sorted = [...boards].sort((a, b) => this.sortByStatusDesc(a, b, 'PROGRESS'))
         break;
       case 'done':
         type === 'ASC'
-          ? sorted = [...boards].sort((a, b) => this.sortByStatusAsc(a, b, 'DONE'))
-          : sorted = [...boards].sort((a, b) => this.sortByStatusAsc(a, b, 'DONE')).reverse()
+          ? sorted = [...boards].sort((a, b) => this.sortByStatusDesc(a, b, 'DONE')).reverse()
+          : sorted = [...boards].sort((a, b) => this.sortByStatusDesc(a, b, 'DONE'))
         break;
       default:
         sorted = boards;
@@ -51,7 +51,7 @@ export class SortBoardsPipe implements PipeTransform {
     return +new Date(a.createdAt) - +new Date(b.createdAt);
   }
 
-  sortByStatusAsc(a: IBoard, b: IBoard, status: string): number {
+  sortByStatusDesc(a: IBoard, b: IBoard, status: string): number {
     const todosInFirst = a.tasks.filter(t => t.status === status).length;
     const todosInSecond = b.tasks.filter(t => t.status === status).length;
     return todosInSecond - todosInFirst;
